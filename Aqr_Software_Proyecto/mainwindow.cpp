@@ -29,8 +29,8 @@ void MainWindow::on_pushButton_clicked()
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setHostName("127.0.0.1");
     db.setUserName("root");
-    db.setPassword("G7v3R2001");
-    db.setDatabaseName("cashflow_db");
+    db.setPassword("");
+    db.setDatabaseName("C:/Users/lacac/Desktop/db/mydb");
 
     if(db.open()){
 
@@ -46,25 +46,39 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_Ingresar_clicked()
 {
 
-    QString nombreValido = "Gerardo";
-    short int contrasenaValida = 1234;
-    bool bandera1 = false;
-    bool bandera2 = false;
-    QString userName=ui->inputUsername->text();
-    QString password=ui->inputPassword->text();
-    int password2 = password.toInt();
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE" , "MyConnect");
+        db.setHostName("127.0.0.1");
+        db.setUserName("root");
+        db.setPassword("");
+        db.setDatabaseName("C:/Users/lacac/Desktop/db/mydb");
 
-    if(userName == nombreValido){
-        bandera1 = true;
-    }
-    if (password2 == contrasenaValida){
-        bandera2 = true;
-    }
+        QString userName=ui->inputUsername->text();
+        QString password=ui->inputPassword->text();
+        if(db.open()){
 
-    if (bandera1 and bandera2 == true){
-        ui->alertaLogin->setText("lOGRADO");
-        this->setVisible(false);
-        ventana->setVisible(true);
-    }
+            QMessageBox::information(this, "Connection", "Database Connected Successfully");
 
+        } else{
+            QSqlError error = db.lastError();
+                    QMessageBox::information(this, "Connection", error.databaseText());
+
+        }
+
+        if(!db.isOpen()){
+        qDebug()<<"Fallo al abrir";
+        return;
+        }
+       else{
+
+        QSqlQuery qry;
+        if(qry.exec("select * from users where username='"+userName+"'and password= '"+password+"'")){
+            int count=0;
+            while(qry.next()){
+                count++;
+            }
+            if(count==1){
+                ui->alertaLogin->setText("logrado");
+            }
+        }
+        }
 }

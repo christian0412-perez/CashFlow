@@ -96,7 +96,7 @@ void indicadoresDeDinero::on_button_GeratePDF_clicked()
     painter.drawLine(8000,3900,8000,2300);
     //cuentas por pagar
     painter.drawText(300,4200,"Cuentas por pagar");
-    painter.drawText(300,5600,"Total Inventarios:");
+    painter.drawText(300,5600,"Total a pagar:");
     //Lineas horizontales
 
     painter.drawLine(300,4300,8000,4300);
