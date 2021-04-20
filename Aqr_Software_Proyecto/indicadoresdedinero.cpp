@@ -96,7 +96,7 @@ void indicadoresDeDinero::on_button_GeratePDF_clicked()
     painter.drawLine(8000,3900,8000,2300);
     //cuentas por pagar
     painter.drawText(300,4200,"Cuentas por pagar");
-    painter.drawText(300,5800,"Total Inventarios:");
+    painter.drawText(300,5600,"Total Inventarios:");
     //Lineas horizontales
 
     painter.drawLine(300,4300,8000,4300);
@@ -107,16 +107,15 @@ void indicadoresDeDinero::on_button_GeratePDF_clicked()
     painter.drawLine(300,5300,8000,5300);
     painter.drawLine(300,5500,8000,5500);
     painter.drawLine(300,5700,8000,5700);
-    painter.drawLine(300,5900,8000,5900);
+
     //Lineas verticales
-    painter.drawLine(2400,5900,2400,4300);
-    painter.drawLine(3400,5900,3400,4300);
-    painter.drawLine(4400,5900,4400,4300);
-    painter.drawLine(5400,5900,5400,4300);
-    painter.drawLine(6400,5900,6400,4300);
-    painter.drawLine(7400,5900,7400,4300);
-    painter.drawLine(8000,5900,8000,4300);
-    painter.drawText(300,15000,"Total Inventarios:");
+    painter.drawLine(2400,5700,2400,4300);
+    painter.drawLine(3400,5700,3400,4300);
+    painter.drawLine(4400,5700,4400,4300);
+    painter.drawLine(5400,5700,5400,4300);
+    painter.drawLine(6400,5700,6400,4300);
+    painter.drawLine(7400,5700,7400,4300);
+    painter.drawLine(8000,5700,8000,4300);
 
     painter.end();
 }
